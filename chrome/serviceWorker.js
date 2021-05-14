@@ -1,5 +1,11 @@
 const actionContext = chrome.runtime.getManifest().manifest_version === 3 ? 'action' : 'browser_action';
-// function actionAPI(){ return chrome.runtime.getManifest().manifest_version === 3 ? chrome.action : chrome.browserAction; }
+function actionAPI(){ return chrome.runtime.getManifest().manifest_version === 3 ? chrome.action : chrome.browserAction; }
+
+function openPage() {
+    chrome.tabs.create({ active: true, url: chrome.runtime.getURL('focloir.html') });
+}
+
+actionAPI().onClicked.addListener(openPage);
 
 chrome.contextMenus.removeAll(function(){
     chrome.contextMenus.create({

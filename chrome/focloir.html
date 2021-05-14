@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Foclóir</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        html {
+            overflow: hidden;
+            height: 100%;
+        }
+
+        iframe {
+            width: 95%;
+            min-width: 95%;
+            height: 400px;
+            margin: auto;
+            padding: 10px 30px;
+            background-color: #FFF;
+        }
+
+        header {
+            background-color: #FFA530;
+            color: #54494B;
+            margin: -20px;
+            padding: 35px;
+        }
+
+        header a, footer a, footer {
+            color: #F1F7ED;
+        }
+
+        header a:hover, footer a:hover {
+            color: #FFF;
+        }
+
+        .custom-switch {
+            padding-left: 10%;
+            padding-top: 5%;
+            color: #FFF;
+        }
+
+        body {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+            padding: 20px;
+            background-color: #B38CB4;
+            overflow-y: auto;
+            height: 100%;
+        }
+
+        .row {
+            flex: 1;
+        }
+
+        footer {
+            padding: 15px;
+            font-size: 15px;
+            margin: 80px -20px -20px -20px;
+            min-height: 100px;
+            line-height: 70px; /* Vertically center the text there */
+            background-color: #54494B;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Foclóir</h1>
+        <p> Cuardach comhaontaithe ar fhoinsí ó
+            <a href="https://www.teanglann.ie"> Teanglann.ie</a>,
+            <a href="http://www.potafocal.com"> Potafocal.com</a> &
+            <a href="https://www.tearma.ie"> Téarma.ie</a>.
+        </p>
+    </header>
+
+    <div class="form-row align-items-center">
+        <div class="col-sm-8 col-md-6 col-12">
+            <input type="text" id="focal" class="form-control" placeholder="Cuardaigh Focal"/>
+            <label class="sr-only" for="focal">Focal</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-lg-6 col-xl-4">
+            <div style="min-width: 100%; padding-left: 2.5%;">
+                <div class="custom-control custom-switch">
+                    <input class="custom-control-input" type="checkbox" id="fgbSwitch">
+                    <label class="custom-control-label" for="fgbSwitch">Foclóir Gaeilge-Béarla (Teanglann.ie)</label>
+                </div>
+                <iframe id="fgb" class="collapse"></iframe>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-6 col-xl-4">
+            <div style="min-width: 100%; padding-left: 2.5%;">
+                <div class="custom-control custom-switch">
+                    <input class="custom-control-input" type="checkbox" id="fbeagSwitch">
+                    <label class="custom-control-label" for="fbeagSwitch">An Foclóir Beag (Teanglann.ie)</label>
+                </div>
+                <iframe id="fbeag" class="collapse"></iframe>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-6 col-xl-4">
+            <div style="min-width: 100%; padding-left: 2.5%;">
+                <div class="custom-control custom-switch">
+                    <input class="custom-control-input" type="checkbox" id="eidSwitch">
+                    <label class="custom-control-label" for="eidSwitch">Foclóir Béarla-Gaeilge (Teanglann.ie)</label>
+                </div>
+                <iframe id="eid" class="collapse"></iframe>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-6 col-xl-4">
+            <div style="min-width: 100%; padding-left: 2.5%;">
+                <div class="custom-control custom-switch">
+                    <input class="custom-control-input" type="checkbox" id="gramSwitch">
+                    <label class="custom-control-label" for="gramSwitch">Gramadach (Teanglann.ie)</label>
+                </div>
+                <iframe id="gram" class="collapse"></iframe>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-6 col-xl-4">
+            <div style="min-width: 100%; padding-left: 2.5%;">
+                <div class="custom-control custom-switch">
+                    <input class="custom-control-input" type="checkbox" id="fuaimSwitch">
+                    <label class="custom-control-label" for="fuaimSwitch">Fuaim (Teanglann.ie)</label>
+                </div>
+                <iframe id="fuaim" class="collapse"></iframe>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-6 col-xl-4">
+            <div style="min-width: 100%; padding-left: 2.5%;">
+                <div class="custom-control custom-switch">
+                    <input class="custom-control-input" type="checkbox" id="gtSwitch">
+                    <label class="custom-control-label" for="gtSwitch">Gluais Tí (Potafocal.com)</label>
+                </div>
+                <iframe id="gt" class="collapse"></iframe>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-6 col-xl-4">
+            <div style="min-width: 100%; padding-left: 2.5%;">
+                <div class="custom-control custom-switch">
+                    <input class="custom-control-input" type="checkbox" id="gbSwitch">
+                    <label class="custom-control-label" for="gbSwitch">Gluais Beo (Potafocal.com)</label>
+                </div>
+                <iframe id="gb" class="collapse"></iframe>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-6 col-xl-4">
+            <div style="min-width: 100%; padding-left: 2.5%;">
+                <div class="custom-control custom-switch">
+                    <input class="custom-control-input" type="checkbox" id="thesSwitch">
+                    <label class="custom-control-label" for="thesSwitch">Teasáras (Potafocal.com)</label>
+                </div>
+                <iframe id="thes" class="collapse"></iframe>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-6 col-xl-4">
+            <div style="min-width: 100%; padding-left: 2.5%;">
+                <div class="custom-control custom-switch">
+                    <input class="custom-control-input" type="checkbox" id="tearmaSwitch">
+                    <label class="custom-control-label" for="tearmaSwitch">Téarma.ie</label>
+                </div>
+                <iframe id="tearma" class="collapse"></iframe>
+            </div>
+        </div>
+
+        <!--<div class="col-12 col-lg-6 col-xl-4">-->
+            <!--<div style="min-width: 100%; padding-left: 2.5%;">-->
+                <!--<div class="custom-control custom-switch">-->
+                    <!--<input class="custom-control-input" type="checkbox" id="focSwitch">-->
+                    <!--<label class="custom-control-label" for="focSwitch">Foclóir Gaeilge-Béarla</label>-->
+                <!--</div>-->
+                <!--<iframe id="foc" class="collapse"></iframe>-->
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+
+    <footer class="footer" style="text-align: center;">
+        <span>Cruthaithe ag:
+            <a target="_blank" href="https://soceanainn.com">Séamus Ó Ceanainn</a>
+        </span>
+    </footer>
+
+    <script src="./js/jquery-3.3.1.slim.min.js"></script>
+    <script src="./js/popper-1.14.7.min.js"></script>
+    <script src="./js/bootstrap-4.3.1.min.js"></script>
+
+    <script src="focloir.js"></script>
+</body>
+</html>
