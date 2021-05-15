@@ -3,7 +3,13 @@ function snippet(observer){
     if (gtResults) {
         observer.disconnect();
         gtResults.style.margin = "auto";
-        return document.body.innerHTML = gtResults.outerHTML;
+        document.body.innerHTML = gtResults.outerHTML;
+
+        const mutationObserverConfig = { childList: true, subtree: true,  attributes: true };
+        const mutationObserver = new MutationObserver(cleanupOnClick);
+        mutationObserver.observe(document.body, mutationObserverConfig);
+        return cleanupOnClick();
+
     }
 
     const beoResults = document.querySelector('#invelope > div.beoResults');
@@ -25,5 +31,19 @@ function snippet(observer){
         observer.disconnect();
         noJoy.style.margin = "auto";
         return document.body.innerHTML = noJoy.outerHTML;
+    }
+}
+
+function cleanupOnClick(){
+    const gtResults = document.querySelector('div.gtResults');
+    if (gtResults) {
+        Array.from(gtResults.getElementsByClassName('token')).forEach(function (span) {
+            const onclick = span.getAttribute('onclick');
+            if (!onclick || !onclick.startsWith("window.location=")) return;
+            span.removeAttribute('data-token');
+            span.removeAttribute('onclick');
+            const path = onclick.trim().replace(/'/g, "").replace("window.location=", "");
+            span.setAttribute('onclick', "window.open('" + path + "', '_blank'); location.reload();");
+        });
     }
 }
