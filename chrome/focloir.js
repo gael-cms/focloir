@@ -46,10 +46,9 @@ $('input:checkbox').change(function(){
     if (inputBox.value.trim()) doSearch();
 });
 
-$('.custom-control-input').each(function(i, e){
-    let obj = $(this);
+$('.custom-control-input').get().reverse().forEach(function(e){
     chrome.storage.local.get(e.id, function(result){
-        obj.prop("checked", result[e.id]).change();
+        $(e).prop("checked", result[e.id]).change();
     });
 });
 
