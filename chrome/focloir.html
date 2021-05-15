@@ -61,6 +61,17 @@
             line-height: 70px; /* Vertically center the text there */
             background-color: #54494B;
         }
+
+        .btn-outline:hover {
+            background-color: #54494B;
+            color: #FFF;
+        }
+
+        .btn-outline {
+            color: #54494B;
+            border-color: #54494B;
+            background-color: #FFF
+        }
     </style>
 </head>
 <body>
@@ -75,9 +86,10 @@
 
     <div class="form-row align-items-center">
         <div class="col-sm-8 col-md-6 col-12">
-            <input type="text" id="focal" class="form-control" placeholder="Cuardaigh Focal"/>
+            <input type="text" id="focal" class="form-control" autocomplete="off" placeholder="Cuardaigh Focal"/>
             <label class="sr-only" for="focal">Focal</label>
         </div>
+        <button type="button" class="btn btn-outline" id="button">Cuardaigh</button>
     </div>
     <div class="row">
         <div class="col-12 col-lg-6 col-xl-4">

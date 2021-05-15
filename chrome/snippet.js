@@ -1,12 +1,13 @@
-function inIframe () {
+function focloirExtensionPage () {
     try {
-        return window.self !== window.top;
+        return window.location.search.includes("calledByFocloir=true")
     } catch (e) {
-        return true;
+        console.log(e);
+        return false;
     }
 }
 
-if (inIframe()){
+if (focloirExtensionPage()){
     const mutationObserverConfig = { childList: true, subtree: true };
     const mutationObserver = new MutationObserver(snippet);
 
