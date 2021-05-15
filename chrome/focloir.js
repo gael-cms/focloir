@@ -32,14 +32,25 @@ function doSearch() {
 
 $('input:checkbox').change(function(){
     const targetId = "#" + this.id.replace("Switch", "");
-    if ($(this).is(':checked')) {
-        $(targetId).collapse('show');
-    } else $(targetId).collapse('hide');
+    const isChecked = $(this).is(':checked');
+
+    if (isChecked) $(targetId).collapse('show');
+     else $(targetId).collapse('hide');
+
+    chrome.storage.local.set({[this.id]: isChecked});
 
     const parent = $(targetId).parents('.row');
     parent.append(parent.find('.collapsing').parents('.col-12'));
     parent.append(parent.find('.collapse:not(.show)').parents('.col-12').get().reverse());
     if (inputBox.value.trim()) doSearch();
+});
+
+$('.custom-control-input').each(function(i, e){
+    let obj = $(this);
+    chrome.storage.local.get(e.id, function(result){
+        console.log("Read " + e.id + " as: " + result[e.id]);
+        obj.prop("checked", result[e.id]).change();
+    });
 });
 
 inputBox.addEventListener('keyup', function onEvent(e) {
