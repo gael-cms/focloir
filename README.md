@@ -2,6 +2,9 @@
 
 A web browser extension that performs a unified search of Irish dictionaries and glossaries.
 
+Download the extension [here](https://chrome.google.com/webstore/detail/focloir/lobkeheepafffkjbafikdmcjbapggmce) for Chrome,
+and [here](https://addons.mozilla.org/ga-IE/firefox/addon/focl%C3%B3ir/) for Firefox.
+
 ## Testing Your Changes
 
 ### Chrome

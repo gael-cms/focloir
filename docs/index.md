@@ -1,4 +1,4 @@
-*Is féidir Foclóir a suiteáil anseo do Google Chrome agus anseo do Firefox*
+*Is féidir Foclóir a suiteáil [anseo](https://chrome.google.com/webstore/detail/focloir/lobkeheepafffkjbafikdmcjbapggmce) do Google Chrome agus [anseo](https://addons.mozilla.org/ga-IE/firefox/addon/focl%C3%B3ir/) do Firefox*
 
 # Céard é Foclóir?
 
