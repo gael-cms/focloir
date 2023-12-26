@@ -1,7 +1,7 @@
 {
   "name": "Foclóir",
   "description": "A web browser extension to provide a unified search of Irish dictionaries and glossaries",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "manifest_version": 3,
   "background": {
     "service_worker": "serviceWorker.js"
@@ -33,6 +33,11 @@
     {
       "matches": ["*://www.tearma.ie/*"],
       "js": ["snippets/tearma.js", "snippet.js"],
+      "all_frames": true
+    },
+    {
+      "matches": ["*://www.gaois.ie/*"],
+      "js": ["snippets/gaois.js", "snippet.js"],
       "all_frames": true
     }
   ]

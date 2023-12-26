@@ -11,7 +11,7 @@ and [here](https://addons.mozilla.org/ga-IE/firefox/addon/focl%C3%B3ir/) for Fir
 
 To test local changes to the extension, go to `chrome://extensions/` in your browser.
 
-Click 'Load Unpacked', navigate to the `Gaeilgeoir/chrome` directory and hit 'Select' (Developer Mode most be enabled in the top right of the screen).
+Click 'Load Unpacked', navigate to the `focloir/chrome` directory and hit 'Select' (Developer Mode most be enabled in the top right of the screen).
 
 To pick up changes you've made locally you must hit the refresh/reload button on the extension card in `chrome://extensions/`.
 

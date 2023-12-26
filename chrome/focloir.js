@@ -8,10 +8,13 @@ const gt =          document.getElementById('gt');
 const gb =          document.getElementById('gb');
 const thes =        document.getElementById('thes');
 const tearma =      document.getElementById('tearma');
-// const foc =         document.getElementById('foc');
+const iate =        document.getElementById('iate');
+const cgc =         document.getElementById('cgc');
+const ccbg =        document.getElementById('ccbg');
+const ccgb =        document.getElementById('ccgb');
 
 function updateIframe(elem, uri){
-    if (elem.className !== "collapse" && elem.src !== encodeURI(uri)) elem.src = encodeURI(uri);
+    if (elem?.style?.display !== "none" && elem?.src !== encodeURI(uri)) elem.src = encodeURI(uri);
 }
 
 function doSearch() {
@@ -28,27 +31,36 @@ function doSearch() {
     updateIframe(thes, "http://www.potafocal.com/thes/?s=" + searchTerm + "&calledByFocloir=true");
 
     updateIframe(tearma, "https://www.tearma.ie/q/" + searchTerm + "?calledByFocloir=true");
-    // updateIframe(foc, "https://www.focloir.ie/ga/dictionary/ei/" + searchTerm + "?calledByFocloir=true");
-}
 
+    updateIframe(iate, "https://www.gaois.ie/ga/terminology/?Query=" + searchTerm + "&PerPage=50&calledByFocloir=true");
+    updateIframe(cgc, "https://www.gaois.ie/ga/corpora/monolingual/?Query=" + searchTerm + "&SearchMode=exact&PerPage=50&calledByFocloir=true");
+    updateIframe(ccbg, "https://www.gaois.ie/ga/corpora/parallel/?Query=" + searchTerm + "&SearchMode=exact&Language=en&PerPage=50&calledByFocloir=true");
+    updateIframe(ccgb, "https://www.gaois.ie/ga/corpora/parallel/?Query=" + searchTerm + "&SearchMode=exact&Language=ga&PerPage=50&calledByFocloir=true");
+}
 $('input:checkbox').change(function(){
     const targetId = "#" + this.id.replace("Switch", "");
     const isChecked = $(this).is(':checked');
 
-    if (isChecked) $(targetId).collapse('show');
-     else $(targetId).collapse('hide');
+    $(targetId).slideToggle('slow', () => {
+        if (!isChecked) parent.append($(targetId).parents('.col-4'));
+    });
 
     chrome.storage.local.set({[this.id]: isChecked});
 
     const parent = $(targetId).parents('.row');
-    parent.append(parent.find('.collapsing').parents('.col-12'));
-    parent.append(parent.find('.collapse:not(.show)').parents('.col-12').get().reverse());
+
+    parent.append(parent.find('.collapse:hidden').parents('.col-4').get().reverse());
     if (inputBox.value.trim()) doSearch();
 });
 
-$('.custom-control-input').get().reverse().forEach(function(e){
+$('.toggle-checkbox').get().reverse().forEach(function(e){
     chrome.storage.local.get(e.id, function(result){
-        $(e).prop("checked", result[e.id]).change();
+        const isChecked = result[e.id];
+        $(e).prop("checked", isChecked).change();
+        if (isChecked) {
+          const targetId = "#" + e.id.replace("Switch", "");
+          $(targetId).slideToggle(150);
+        }
     });
 });
 
@@ -57,3 +69,5 @@ inputBox.addEventListener('keyup', function onEvent(e) {
 });
 
 $('#button').click(doSearch);
+
+$('#form').submit((ev) => ev.preventDefault());
