@@ -28,6 +28,11 @@
   "permissions": [ "contextMenus", "storage"],
   "content_scripts": [
     {
+      "matches": ["*://www.gaois.ie/*"],
+      "js": ["snippets/gaois.js", "snippet.js"],
+      "all_frames": true
+    },
+    {
       "matches": ["*://www.potafocal.com/*"],
       "js": ["snippets/potafocal.js", "snippet.js"],
       "all_frames": true
