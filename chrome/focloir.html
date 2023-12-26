@@ -1,208 +1,274 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Foclóir</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <style>
-        html {
-            overflow: hidden;
-            height: 100%;
-        }
+<!DOCTYPE HTML>
+<html>
+	<head>
+        <title>Foclóir</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="css/main.css" />
+        <style>
+            #banner .wrapper {
+                padding-top: 6rem;
+                padding-bottom: 3rem;
+            }
 
-        iframe {
-            width: 95%;
-            min-width: 95%;
-            height: 400px;
-            margin: auto;
-            padding: 10px 30px;
-            background-color: #FFF;
-        }
+            @media screen and (max-width: 736px) {
+                #banner .wrapper {
+                    padding-top: 6rem;
+                    padding-bottom: 3rem;
+                }
+            }
 
-        header {
-            background-color: #FFA530;
-            color: #54494B;
-            margin: -20px;
-            padding: 35px;
-        }
+            iframe {
+                width: 95%;
+                min-width: 95%;
+                height: 400px;
+                margin: auto;
+                padding: 10px 30px;
+                background-color: #FFF;
+            }
 
-        header a, footer a, footer, .custom-switch, .custom-switch a {
-            color: #F1F7ED;
-        }
+            .toggle {
+              cursor: pointer;
+              display: inline-block;
+            }
 
-        header a:hover, footer a:hover, .custom-switch a:hover {
-            color: #FFF;
-        }
+            .toggle-switch {
+              display: inline-block;
+              background: #ccc;
+              border-radius: 12px;
+              width: 50px;
+              height: 24px;
+              position: relative;
+              vertical-align: middle;
+              transition: background 0.25s;
+            }
+            .toggle-switch:before, .toggle-switch:after {
+              content: "";
+            }
+            .toggle-switch:before {
+              display: block;
+              background: linear-gradient(to bottom, #fff 0%, #eee 100%);
+              border-radius: 50%;
+              box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+              width: 18px;
+              height: 18px;
+              position: absolute;
+              top: 3px;
+              left: 3px;
+              transition: left 0.25s;
+            }
+            .toggle:hover .toggle-switch:before {
+              background: linear-gradient(to bottom, #fff 0%, #fff 100%);
+              box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
+            }
+            .toggle-checkbox:checked + .toggle-switch {
+              background: #8161e0;
+            }
+            .toggle-checkbox:checked + .toggle-switch:before {
+              left: 30px;
+            }
 
-        .custom-switch {
-            padding-left: 10%;
-            padding-top: 5%;
-        }
+            .toggle-checkbox {
+              position: absolute;
+              visibility: hidden;
+            }
 
-        body {
-            display: flex;
-            min-height: 100vh;
-            flex-direction: column;
-            padding: 20px;
-            background-color: #B38CB4;
-            overflow-y: auto;
-            height: 100%;
-        }
+            .toggle-label {
+              margin-left: 5px;
+              position: relative;
+              top: 2px;
+            }
+        </style>
+	</head>
+	<body class="is-preload">
+        <header id="header" class="alt">
+            <a class="logo" href="https://gaelcms.com">Foclóir <span>le GaelCMS</span></a>
+        </header>
 
-        .row {
-            flex: 1;
-        }
+        <div id="banner">
+            <div class="wrapper style1">
+                <div class="inner">
 
-        footer {
-            padding: 15px;
-            font-size: 15px;
-            margin: 80px -20px -20px -20px;
-            min-height: 100px;
-            line-height: 70px; /* Vertically center the text there */
-            background-color: #54494B;
-        }
-
-        .btn-outline:hover {
-            background-color: #54494B;
-            color: #FFF;
-        }
-
-        .btn-outline {
-            color: #54494B;
-            border-color: #54494B;
-            background-color: #FFF
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>Foclóir</h1>
-        <p> Cuardach comhaontaithe ar fhoinsí ó
-            <a href="https://www.teanglann.ie"> Teanglann.ie</a>,
-            <a href="http://www.potafocal.com"> Potafocal.com</a> &
-            <a href="https://www.tearma.ie"> Téarma.ie</a>.
-        </p>
-    </header>
-
-    <div class="form-row align-items-center">
-        <div class="col-sm-8 col-md-6 col-12">
-            <input type="text" id="focal" class="form-control" autocomplete="off" placeholder="Cuardaigh Focal"/>
-            <label class="sr-only" for="focal">Focal</label>
-        </div>
-        <button type="button" class="btn btn-outline" id="button">Cuardaigh</button>
-    </div>
-    <div class="row">
-        <div class="col-12 col-lg-6 col-xl-4">
-            <div style="min-width: 100%; padding-left: 2.5%;">
-                <div class="custom-control custom-switch">
-                    <input class="custom-control-input" type="checkbox" id="fgbSwitch">
-                    <label class="custom-control-label" for="fgbSwitch">Foclóir Gaeilge-Béarla (<a href="https://www.teanglann.ie" target="_blank">Teanglann.ie</a>)</label>
+                    <form id="form" class="combined">
+                        <input type="text" name="focal" id="focal" autocomplete="off" placeholder="Cuardaigh Focal" class="invert" />
+                        <label class="sr-only" for="focal">Focal</label>
+                        <input type="submit" id="button" class="special" value="Cuardaigh" />
+                    </form>
+                     <h3> Cuardach comhaontaithe ar fhoinsí ó
+                        <a href="https://www.teanglann.ie"> Teanglann.ie</a>,
+                        <a href="http://www.potafocal.com"> Potafocal.com</a>,
+                        <a href="https://www.tearma.ie"> Téarma.ie</a> &
+                        <a href="https://www.gaois.ie/ga"> Gaois.ie</a>.
+                    </h3>
                 </div>
-                <iframe id="fgb" class="collapse"></iframe>
             </div>
         </div>
 
-        <div class="col-12 col-lg-6 col-xl-4">
-            <div style="min-width: 100%; padding-left: 2.5%;">
-                <div class="custom-control custom-switch">
-                    <input class="custom-control-input" type="checkbox" id="fbeagSwitch">
-                    <label class="custom-control-label" for="fbeagSwitch">An Foclóir Beag (<a href="https://www.teanglann.ie" target="_blank">Teanglann.ie</a>)</label>
+
+        <div id="main">
+            <div class="wrapper special">
+                <div class="inner">
+                    <div class="row gtr-200">
+                        <div class="col-4 col-6-large col-12-medium">
+                            <div style="min-width: 100%; padding-left: 2.5%;">
+                                <label class="toggle">
+                                    <input class="toggle-checkbox" type="checkbox" id="fgbSwitch">
+                                    <span class="toggle-switch"></span>
+                                    <span class="toggle-label">Foclóir Gaeilge-Béarla (<a href="https://www.teanglann.ie" target="_blank">Teanglann.ie</a>)</span>
+                                </label>
+                                <iframe id="fgb" class="collapse"></iframe>
+                            </div>
+                        </div>
+
+                        <div class="col-4 col-6-large col-12-medium">
+                            <div style="min-width: 100%; padding-left: 2.5%;">
+                                <label class="toggle">
+                                    <input class="toggle-checkbox" type="checkbox" id="fbeagSwitch">
+                                    <span class="toggle-switch"></span>
+                                    <span class="toggle-label">An Foclóir Beag (<a href="https://www.teanglann.ie" target="_blank">Teanglann.ie</a>)</span>
+                                </label>
+                                <iframe id="fbeag" class="collapse"></iframe>
+                            </div>
+                        </div>
+
+                        <div class="col-4 col-6-large col-12-medium">
+                            <div style="min-width: 100%; padding-left: 2.5%;">
+                                <label class="toggle">
+                                    <input class="toggle-checkbox" type="checkbox" id="eidSwitch">
+                                    <span class="toggle-switch"></span>
+                                    <span class="toggle-label">Foclóir Béarla-Gaeilge (<a href="https://www.teanglann.ie" target="_blank">Teanglann.ie</a>))</span>
+                                </label>
+                                <iframe id="eid" class="collapse"></iframe>
+                            </div>
+                        </div>
+
+                        <div class="col-4 col-6-large col-12-medium">
+                            <div style="min-width: 100%; padding-left: 2.5%;">
+                                <label class="toggle">
+                                    <input class="toggle-checkbox" type="checkbox" id="gramSwitch">
+                                    <span class="toggle-switch"></span>
+                                    <span class="toggle-label">Gramadach (<a href="https://www.teanglann.ie" target="_blank">Teanglann.ie</a>)</span>
+                                </label>
+                                <iframe id="gram" class="collapse"></iframe>
+                            </div>
+                        </div>
+
+                        <div class="col-4 col-6-large col-12-medium">
+                            <div style="min-width: 100%; padding-left: 2.5%;">
+                                <label class="toggle">
+                                    <input class="toggle-checkbox" type="checkbox" id="fuaimSwitch">
+                                    <span class="toggle-switch"></span>
+                                    <span class="toggle-label">Fuaim (<a href="https://www.teanglann.ie" target="_blank">Teanglann.ie</a>)</span>
+                                </label>
+                                <iframe id="fuaim" class="collapse"></iframe>
+                            </div>
+                        </div>
+
+                        <div class="col-4 col-6-large col-12-medium">
+                            <div style="min-width: 100%; padding-left: 2.5%;">
+                                <label class="toggle">
+                                    <input class="toggle-checkbox" type="checkbox" id="gtSwitch">
+                                    <span class="toggle-switch"></span>
+                                    <span class="toggle-label">Gluais Tí (<a href="http://www.potafocal.com" target="_blank">Potafocal.com</a>)</span>
+                                </label>
+                                <iframe id="gt" class="collapse"></iframe>
+                            </div>
+                        </div>
+
+                        <div class="col-4 col-6-large col-12-medium">
+                            <div style="min-width: 100%; padding-left: 2.5%;">
+                                <label class="toggle">
+                                    <input class="toggle-checkbox" type="checkbox" id="gbSwitch">
+                                    <span class="toggle-switch"></span>
+                                    <span class="toggle-label">Gluais Beo (<a href="http://www.potafocal.com" target="_blank">Potafocal.com</a>)</span>
+                                </label>
+                                <iframe id="gb" class="collapse"></iframe>
+                            </div>
+                        </div>
+
+                        <div class="col-4 col-6-large col-12-medium">
+                            <div style="min-width: 100%; padding-left: 2.5%;">
+                                <label class="toggle">
+                                    <input class="toggle-checkbox" type="checkbox" id="thesSwitch">
+                                    <span class="toggle-switch"></span>
+                                    <span class="toggle-label">Teasáras (<a href="http://www.potafocal.com" target="_blank">Potafocal.com</a>)</span>
+                                </label>
+                                <iframe id="thes" class="collapse"></iframe>
+                            </div>
+                        </div>
+
+                        <div class="col-4 col-6-large col-12-medium">
+                            <div style="min-width: 100%; padding-left: 2.5%;">
+                                <label class="toggle">
+                                    <input class="toggle-checkbox" type="checkbox" id="tearmaSwitch">
+                                    <span class="toggle-switch"></span>
+                                    <span class="toggle-label">An Bunachar Náisiúnta Téarmaíochta (<a href="https://www.tearma.ie" target="_blank">Téarma.ie</a>)</span>
+                                </label>
+                                <iframe id="tearma" class="collapse"></iframe>
+                            </div>
+                        </div>
+
+                        <div class="col-4 col-6-large col-12-medium">
+                            <div style="min-width: 100%; padding-left: 2.5%;">
+                                <label class="toggle">
+                                    <input class="toggle-checkbox" type="checkbox" id="iateSwitch">
+                                    <span class="toggle-switch"></span>
+                                    <span class="toggle-label">Téarmaíocht IATE (<a href="https://www.gaois.ie/ga/terminology/" target="_blank">Gaois.ie</a>)</span>
+                                </label>
+                                <iframe id="iate" class="collapse"></iframe>
+                            </div>
+                        </div>
+
+                        <div class="col-4 col-6-large col-12-medium">
+                            <div style="min-width: 100%; padding-left: 2.5%;">
+                                <label class="toggle">
+                                    <input class="toggle-checkbox" type="checkbox" id="cgcSwitch">
+                                    <span class="toggle-switch"></span>
+                                    <span class="toggle-label">Corpas na Gaeilge Comhaimseartha (<a href="https://www.gaois.ie/ga/corpora/monolingual/" target="_blank">Gaois.ie</a>)</span>
+                                </label>
+                                <iframe id="cgc" class="collapse"></iframe>
+                            </div>
+                        </div>
+                        <div class="col-4 col-6-large col-12-medium">
+                            <div style="min-width: 100%; padding-left: 2.5%;">
+                                <label class="toggle">
+                                    <input class="toggle-checkbox" type="checkbox" id="ccbgSwitch">
+                                    <span class="toggle-switch"></span>
+                                    <span class="toggle-label">Corpas Comhthreomhar Béarla-Gaeilge (<a href="https://www.gaois.ie/ga/corpora/parallel/" target="_blank">Gaois.ie</a>)</span>
+                                </label>
+                                <iframe id="ccbg" class="collapse"></iframe>
+                            </div>
+                        </div>
+                                                <div class="col-4 col-6-large col-12-medium">
+                            <div style="min-width: 100%; padding-left: 2.5%;">
+                                <label class="toggle">
+                                    <input class="toggle-checkbox" type="checkbox" id="ccgbSwitch">
+                                    <span class="toggle-switch"></span>
+                                    <span class="toggle-label">Corpas Comhthreomhar Gaeilge-Béarla (<a href="https://www.gaois.ie/ga/corpora/parallel/" target="_blank">Gaois.ie</a>)</span>
+                                </label>
+                                <iframe id="ccgb" class="collapse"></iframe>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <iframe id="fbeag" class="collapse"></iframe>
             </div>
         </div>
 
-        <div class="col-12 col-lg-6 col-xl-4">
-            <div style="min-width: 100%; padding-left: 2.5%;">
-                <div class="custom-control custom-switch">
-                    <input class="custom-control-input" type="checkbox" id="eidSwitch">
-                    <label class="custom-control-label" for="eidSwitch">Foclóir Béarla-Gaeilge (<a href="https://www.teanglann.ie" target="_blank">Teanglann.ie</a>))</label>
-                </div>
-                <iframe id="eid" class="collapse"></iframe>
+        <div id="footer">
+            <div class="copyright">
+                <span>Cruthaithe ag:
+                    <a target="_blank" href="https://gaelcms.com">GaelCMS</a>
+                </span>
             </div>
         </div>
 
-        <div class="col-12 col-lg-6 col-xl-4">
-            <div style="min-width: 100%; padding-left: 2.5%;">
-                <div class="custom-control custom-switch">
-                    <input class="custom-control-input" type="checkbox" id="gramSwitch">
-                    <label class="custom-control-label" for="gramSwitch">Gramadach (<a href="https://www.teanglann.ie" target="_blank">Teanglann.ie</a>)</label>
-                </div>
-                <iframe id="gram" class="collapse"></iframe>
-            </div>
-        </div>
-
-        <div class="col-12 col-lg-6 col-xl-4">
-            <div style="min-width: 100%; padding-left: 2.5%;">
-                <div class="custom-control custom-switch">
-                    <input class="custom-control-input" type="checkbox" id="fuaimSwitch">
-                    <label class="custom-control-label" for="fuaimSwitch">Fuaim (<a href="https://www.teanglann.ie" target="_blank">Teanglann.ie</a>)</label>
-                </div>
-                <iframe id="fuaim" class="collapse"></iframe>
-            </div>
-        </div>
-
-        <div class="col-12 col-lg-6 col-xl-4">
-            <div style="min-width: 100%; padding-left: 2.5%;">
-                <div class="custom-control custom-switch">
-                    <input class="custom-control-input" type="checkbox" id="gtSwitch">
-                    <label class="custom-control-label" for="gtSwitch">Gluais Tí (<a href="http://www.potafocal.com" target="_blank">Potafocal.com</a>)</label>
-                </div>
-                <iframe id="gt" class="collapse"></iframe>
-            </div>
-        </div>
-
-        <div class="col-12 col-lg-6 col-xl-4">
-            <div style="min-width: 100%; padding-left: 2.5%;">
-                <div class="custom-control custom-switch">
-                    <input class="custom-control-input" type="checkbox" id="gbSwitch">
-                    <label class="custom-control-label" for="gbSwitch">Gluais Beo (<a href="http://www.potafocal.com" target="_blank">Potafocal.com</a>)</label>
-                </div>
-                <iframe id="gb" class="collapse"></iframe>
-            </div>
-        </div>
-
-        <div class="col-12 col-lg-6 col-xl-4">
-            <div style="min-width: 100%; padding-left: 2.5%;">
-                <div class="custom-control custom-switch">
-                    <input class="custom-control-input" type="checkbox" id="thesSwitch">
-                    <label class="custom-control-label" for="thesSwitch">Teasáras (<a href="http://www.potafocal.com" target="_blank">Potafocal.com</a>)</label>
-                </div>
-                <iframe id="thes" class="collapse"></iframe>
-            </div>
-        </div>
-
-        <div class="col-12 col-lg-6 col-xl-4">
-            <div style="min-width: 100%; padding-left: 2.5%;">
-                <div class="custom-control custom-switch">
-                    <input class="custom-control-input" type="checkbox" id="tearmaSwitch">
-                    <label class="custom-control-label" for="tearmaSwitch">An Bunachar Náisiúnta Téarmaíochta (<a href="https://www.tearma.ie" target="_blank">Téarma.ie</a>)</label>
-                </div>
-                <iframe id="tearma" class="collapse"></iframe>
-            </div>
-        </div>
-
-        <!--<div class="col-12 col-lg-6 col-xl-4">-->
-            <!--<div style="min-width: 100%; padding-left: 2.5%;">-->
-                <!--<div class="custom-control custom-switch">-->
-                    <!--<input class="custom-control-input" type="checkbox" id="focSwitch">-->
-                    <!--<label class="custom-control-label" for="focSwitch">Foclóir Gaeilge-Béarla</label>-->
-                <!--</div>-->
-                <!--<iframe id="foc" class="collapse"></iframe>-->
-            <!--</div>-->
-        <!--</div>-->
-    </div>
-
-    <footer class="footer" style="text-align: center;">
-        <span>Cruthaithe ag:
-            <a target="_blank" href="https://soceanainn.com">Séamus Ó Ceanainn</a>
-        </span>
-    </footer>
-
-    <script src="./js/jquery-3.3.1.slim.min.js"></script>
-    <script src="./js/popper-1.14.7.min.js"></script>
-    <script src="./js/bootstrap-4.3.1.min.js"></script>
-
-    <script src="focloir.js"></script>
-</body>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery.scrollex.min.js"></script>
+        <script src="js/jquery.scrolly.min.js"></script>
+        <script src="js/browser.min.js"></script>
+        <script src="js/breakpoints.min.js"></script>
+        <script src="js/util.js"></script>
+        <script src="js/main.js"></script>
+        <script src="focloir.js"></script>
+	</body>
 </html>

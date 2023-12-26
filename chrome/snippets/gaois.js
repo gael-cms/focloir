@@ -1,5 +1,5 @@
 function snippet(observer){
-    const listings = document.querySelector('div.foras-dblclick-area');
+    const listings = document.querySelector('main > .container > .content > div > :is(ol,p)');
     if (listings) {
         observer.disconnect();
         listings.style.margin = "auto";

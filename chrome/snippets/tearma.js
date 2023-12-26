@@ -7,6 +7,5 @@ function snippet(observer){
             result.style.margin = "auto";
             document.body.innerHTML += result.outerHTML
         });
-        return;
     }
 }

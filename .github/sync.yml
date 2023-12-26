@@ -1,0 +1,3 @@
+gael-cms/gael-cms:
+  - source: docs/index.md
+    dest: site/_extensions/focloir.md
