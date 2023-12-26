@@ -1,7 +1,7 @@
 ---
-title: Gaeilgeoir
+title: Foclóir
 layout: extensions_page
-extension_name: Gaeilgeoir
+extension_name: Foclóir
 chrome_link: https://chrome.google.com/webstore/detail/focloir/lobkeheepafffkjbafikdmcjbapggmce
 firefox_link: https://addons.mozilla.org/ga-IE/firefox/addon/focl%C3%B3ir/
 page_content:
