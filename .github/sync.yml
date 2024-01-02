@@ -1,5 +1,5 @@
 gael-cms/gael-cms:
   - source: docs/index.md
-    dest: site/_extensions/focloir.md
+    dest: site/_extensions/foclóir.md
   - source: docs/privacy.md
-    dest: site/_extension_privacy_policies/focloir.md
+    dest: site/_extension_privacy_policies/foclóir.md

@@ -9,7 +9,7 @@ page_content:
         # Céard é Foclóir?
         
         Is 'síneadh' (extension) le haghaidh Google Chrome / Mozilla Firefox é Foclóir a chuireann cuardach ar fhoinsí ó [Teanglann.ie](https://www.teanglann.ie),
-        [Potafocal.com](http://www.potafocal.com) agus [Téarma.ie](https://www.tearma.ie) ar fáil ar aon leathanach amháin.
+        [Potafocal.com](http://www.potafocal.com), [Téarma.ie](https://www.tearma.ie), agus [Gaois.ie](https://www.gaois.ie) ar fáil ar aon leathanach amháin.
         
         Suiteáil an síneadh agus brú an cnaipe chun an leathanach a oscailt, roghnaigh na foinsí a theastaíonn uait agus cuardaigh focal!
     en: |-
